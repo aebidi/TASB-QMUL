@@ -17,13 +17,7 @@ training.log
 v7_sanity_check_no_augment.log
 
 
-
-# Ignore datasets
-Frame_Dataset/
-*.csv
-*.dcm
-*.jpg
-
+# ignore helper functions
 utils/
 
 # Ignore environment files
