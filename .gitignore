@@ -1,0 +1,31 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore results directory
+final_model_weights/
+visualisations_v4/
+visualisations_v5/
+visualisations_v8/
+
+training_log_v3.log
+training_v4_no_augment.log
+training_v5_no_augment.log
+training_v6_no_augment.log
+training_v8_no_augment.log
+training.log
+v7_sanity_check_no_augment.log
+
+
+
+# Ignore datasets
+Frame_Dataset/
+*.csv
+*.dcm
+*.jpg
+
+utils/
+
+# Ignore environment files
+.env
+*.ipynb_checkpoints/

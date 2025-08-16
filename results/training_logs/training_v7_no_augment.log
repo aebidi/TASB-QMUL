@@ -1,0 +1,128 @@
+INFO: Data augmentations are DISABLED for training.
+Device: cuda
+Found 6313 images for training.
+Found 712 images for validation.
+INFO: Created the Temporal Attention Faster R-CNN model with 3 input channels
+
+--- Starting Training ---
+
+Epoch 1 Summary:
+  Average Training Loss: 0.2197
+  Validation mAP@50: 0.7196
+Validation metric improved (-inf --> 0.719565).  Saving model ...
+--------------------------------------------------
+
+Epoch 2 Summary:
+  Average Training Loss: 0.1845
+  Validation mAP@50: 0.7618
+Validation metric improved (0.719565 --> 0.761811).  Saving model ...
+--------------------------------------------------
+
+Epoch 3 Summary:
+  Average Training Loss: 0.1698
+  Validation mAP@50: 0.7854
+Validation metric improved (0.761811 --> 0.785359).  Saving model ...
+--------------------------------------------------
+
+Epoch 4 Summary:
+  Average Training Loss: 0.1548
+  Validation mAP@50: 0.7988
+Validation metric improved (0.785359 --> 0.798837).  Saving model ...
+--------------------------------------------------
+
+Epoch 5 Summary:
+  Average Training Loss: 0.1438
+  Validation mAP@50: 0.7999
+Validation metric improved (0.798837 --> 0.799903).  Saving model ...
+--------------------------------------------------
+
+Epoch 6 Summary:
+  Average Training Loss: 0.1354
+  Validation mAP@50: 0.7802
+EarlyStopping counter: 1 out of 15
+--------------------------------------------------
+
+Epoch 7 Summary:
+  Average Training Loss: 0.1284
+  Validation mAP@50: 0.7697
+EarlyStopping counter: 2 out of 15
+--------------------------------------------------
+
+Epoch 8 Summary:
+  Average Training Loss: 0.0980
+  Validation mAP@50: 0.7948
+EarlyStopping counter: 3 out of 15
+--------------------------------------------------
+
+Epoch 9 Summary:
+  Average Training Loss: 0.0869
+  Validation mAP@50: 0.7903
+EarlyStopping counter: 4 out of 15
+--------------------------------------------------
+
+Epoch 10 Summary:
+  Average Training Loss: 0.0809
+  Validation mAP@50: 0.7892
+EarlyStopping counter: 5 out of 15
+--------------------------------------------------
+
+Epoch 11 Summary:
+  Average Training Loss: 0.0759
+  Validation mAP@50: 0.7713
+EarlyStopping counter: 6 out of 15
+--------------------------------------------------
+
+Epoch 12 Summary:
+  Average Training Loss: 0.0713
+  Validation mAP@50: 0.7795
+EarlyStopping counter: 7 out of 15
+--------------------------------------------------
+
+Epoch 13 Summary:
+  Average Training Loss: 0.0671
+  Validation mAP@50: 0.7723
+EarlyStopping counter: 8 out of 15
+--------------------------------------------------
+
+Epoch 14 Summary:
+  Average Training Loss: 0.0630
+  Validation mAP@50: 0.7670
+EarlyStopping counter: 9 out of 15
+--------------------------------------------------
+
+Epoch 15 Summary:
+  Average Training Loss: 0.0569
+  Validation mAP@50: 0.7687
+EarlyStopping counter: 10 out of 15
+--------------------------------------------------
+
+Epoch 16 Summary:
+  Average Training Loss: 0.0558
+  Validation mAP@50: 0.7602
+EarlyStopping counter: 11 out of 15
+--------------------------------------------------
+
+Epoch 17 Summary:
+  Average Training Loss: 0.0550
+  Validation mAP@50: 0.7610
+EarlyStopping counter: 12 out of 15
+--------------------------------------------------
+
+Epoch 18 Summary:
+  Average Training Loss: 0.0546
+  Validation mAP@50: 0.7607
+EarlyStopping counter: 13 out of 15
+--------------------------------------------------
+
+Epoch 19 Summary:
+  Average Training Loss: 0.0539
+  Validation mAP@50: 0.7601
+EarlyStopping counter: 14 out of 15
+--------------------------------------------------
+
+Epoch 20 Summary:
+  Average Training Loss: 0.0534
+  Validation mAP@50: 0.7595
+EarlyStopping counter: 15 out of 15
+Early stopping triggered
+--- Training Finished ---

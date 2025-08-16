@@ -1,0 +1,8 @@
+torch
+torchvision
+pydicom
+numpy
+pandas
+Pillow
+tqdm
+matplotlib

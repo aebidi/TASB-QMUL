@@ -1,0 +1,21 @@
+--- FPN Temporal Attention Model (V9) Evaluation Report ---
+Report generated on: 2025-08-10 14:19:02
+Model checkpoint: /home/qzhang-server2/Documents/Abdullah_Notebooks/sb_baseline/results/best_model.pth
+Temporal Frames (k): 3
+--------------------------------------------------
+
+map: 0.3668
+map_50: 0.8314
+map_75: 0.2506
+map_small: 0.0000
+map_medium: 0.2945
+map_large: 0.4146
+mar_1: 0.4101
+mar_10: 0.4758
+mar_100: 0.4758
+mar_small: 0.0000
+mar_medium: 0.4114
+mar_large: 0.5185
+map_per_class: -1.0000
+mar_100_per_class: -1.0000
+classes: 1.0000
