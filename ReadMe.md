@@ -67,6 +67,8 @@ IVUS_SB_Labels.csv: CSV file containing annotations and train/val/test splits.
 
 The preprocessing script converts this into the Frame_Dataset/ structure, required for training.
 
+---
+
 ## Usage
 All scripts are configured via config.py. Key parameters like BATCH_SIZE, EPOCHS, and TEMPORAL_FRAMES_K can be adjusted there.
 
@@ -110,6 +112,8 @@ Compare final test set scores:
 ```bash
 python plot_test_scores.py
 ```
+
+---
 
 ## Results Summary
 
