@@ -2,32 +2,7 @@
 
 ## Project Structure
 
-sb_baseline/
-│
-├── Frame_Dataset/ # (To be created by user) Preprocessed JPG frames and annotations.
-│ ├── train/
-│ ├── val/
-│ └── test/
-│
-├── results/ # Directory for all outputs.
-│ ├── best_model.pth # Saved weights of the best performing model.
-│ ├── classification_report.txt # Final metrics on the test set.
-│ ├── training_log_vX.log # Saved console output from training runs.
-│ ├── visualizations_vX/ # Saved images with predicted bounding boxes.
-│ └── plots/ # Saved comparison plots.
-│
-├── attention.py # Defines the custom TemporalFeatureMapAttention module.
-├── augmentations.py # Defines the Albumentations pipelines for training and validation.
-├── config.py # Central configuration for all hyperparameters and paths.
-├── dataset.py # PyTorch Dataset class for loading temporal IVUS sequences.
-├── evaluate.py # Script to evaluate the best model on the test set.
-├── model.py # (Legacy) Contains earlier model versions (e.g., stacked attention).
-├── plot_comparison.py # Script to plot validation learning curves from logs.
-├── plot_test_scores.py # Script to plot the final test set bar chart.
-├── temporal_attention_model.py # Defines the final, champion FPN Temporal Attention Faster R-CNN.
-├── train.py # Main script for training the models.
-├── utils.py # Utility functions (collate_fn, EarlyStopping, plotting).
-└── visualise.py # Script to generate qualitative results (images with boxes)
+<img width="721" height="523" alt="Screenshot 2025-08-16 at 7 12 53 PM" src="https://github.com/user-attachments/assets/c253ecf6-21c3-488f-aa32-786e7af74330" />
 
 
 ---
