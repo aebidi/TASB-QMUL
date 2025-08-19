@@ -18,7 +18,7 @@ v7_sanity_check_no_augment.log
 
 
 # ignore helper functions
-utils/
+#utils/
 
 # Ignore environment files
 .env
