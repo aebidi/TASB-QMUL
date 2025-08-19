@@ -73,7 +73,17 @@ Generate qualitative results:
 ```bash
 python visualise.py
 ```
-Annotated images will be saved in results/visualizations_V9/.
+Annotated images will be saved in results/visualisations_V7/.
+
+Generating a video sequence:
+```bash
+python ivus_sequence.py
+```
+
+Generating a video sequence with annotations:
+```bash
+python ivus_sequence_with_labels.py
+```
 
 ### 4. Plotting Comparison Graphs
 
