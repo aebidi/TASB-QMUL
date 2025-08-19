@@ -1,4 +1,4 @@
-# SBDI: Side-Branch Detection in IVUS
+# TASB: Temporally-Aware Side-Branch Detection in Intravascular Ultrasound with Weak Supervision
 
 ## Project Structure
 
