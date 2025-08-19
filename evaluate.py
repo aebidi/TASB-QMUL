@@ -7,7 +7,7 @@ from temporal_attention_model import FPN_Temporal_Attention_FasterRCNN
 
 from dataset import IVUSSideBranchDataset
 from augmentations import get_val_transforms
-from train import evaluate # We can reuse the evaluate function from train.py
+from train import evaluate # we can reuse the evaluate function from train.py
 from utils import collate_fn
 
 def main():
@@ -26,15 +26,13 @@ def main():
     print(f"Found {len(dataset_test)} images in the test set.")
     
     # --- 2. Build and Load the CORRECT Model ---
-    # --- THIS IS THE PRIMARY FIX ---
     print(f"INFO: Building the FPN Temporal Attention model for evaluation.")
     model = FPN_Temporal_Attention_FasterRCNN(
         num_classes=config.NUM_CLASSES,
         num_frames=(2 * config.TEMPORAL_FRAMES_K) + 1
     )
-    # ------------------------------
 
-    # Now, load the saved weights into the correct model structure
+    # loading the saved weights into the correct model structure
     model_path = os.path.join(config.OUTPUT_DIR, 'best_model.pth')
     model.load_state_dict(torch.load(model_path, map_location=config.DEVICE))
     model.to(config.DEVICE)

@@ -4,27 +4,26 @@ import numpy as np
 import os
 import random
 
-# Project-specific imports
+# project-specific imports
 import config
 from dataset import IVUSSideBranchDataset
 from augmentations import get_val_transforms
 
-# --- THIS IS THE PRIMARY FIX: Import the correct V9 model ---
 from temporal_attention_model import FPN_Temporal_Attention_FasterRCNN
 
 def main():
-    # --- Configuration ---
-    MODEL_PATH = os.path.join(config.OUTPUT_DIR, 'best_model.pth')
+    # --- configuration ---
+    MODEL_PATH = os.path.join(config.OUTPUT_DIR, 'final_model_weights/best_model.pth')
     TEST_DATA_DIR = os.path.join(config.DATA_ROOT, 'test')
-    OUTPUT_VIS_DIR = os.path.join(config.OUTPUT_DIR, 'visualisations_v8')
+    OUTPUT_VIS_DIR = os.path.join(config.OUTPUT_DIR, 'visualisations_v7_for_paper')
     
     DEVICE = config.DEVICE
     CONFIDENCE_THRESHOLD = config.CONFIDENCE_THRESHOLD
-    NUM_IMAGES_TO_VISUALIZE = 20
+    #NUM_IMAGES_TO_VISUALIZE = 20  ## uncomment to visualise random frames with bboxes
 
     os.makedirs(OUTPUT_VIS_DIR, exist_ok=True)
     
-    # --- 1. BUILD THE CORRECT V9 MODEL ---
+    # --- 1. BUILD THE V7 MODEL ---
     print(f"INFO: Building the FPN Temporal Attention model for visualisation.")
     model = FPN_Temporal_Attention_FasterRCNN(
         num_classes=config.NUM_CLASSES,
@@ -35,11 +34,48 @@ def main():
     model.to(DEVICE)
     model.eval()
 
-    # --- Load Dataset (used as a file index) ---
+    # --- load Dataset (used as a file index) ---
     dataset = IVUSSideBranchDataset(root_dir=TEST_DATA_DIR, transform=None)
     
-    image_indices = random.sample(range(len(dataset)), NUM_IMAGES_TO_VISUALIZE)
-    print(f"Visualising {len(image_indices)} random images...")
+    # add the base filenames to this list
+    specific_filenames_to_test = [
+        "BERN-005-LCX_FU_0713.jpg",
+        "BERN-011-RCA_BL_1700.jpg", 
+        "BERN-024-RCA_BL_0074.jpg",
+        "BERN-024-RCA_BL_0702.jpg",
+        "BERN-036-LAD_FU_2697.jpg",
+        "BERN-036-LAD_FU_2772.jpg",
+        "BERN-036-LCX_BL_1857.jpg",
+        "BERN-038-LCX_BL_1408.jpg",
+        "BERN-038-OM_FU_1274.jpg",
+        "BERN-049-RCA_PROX_BL_0777.jpg",
+        "BERN-050-LAD_DIST_FU_1255.jpg",
+        "BERN-056-LAD_FU_1486.jpg",
+        "BERN-058-LAD_BL_0997.jpg",
+        "BERN-060-LCX_BL_0278.jpg",
+        "BERN-066-RCA_BL_0693.jpg",
+        "BERN-066-RCA_BL_2556.jpg",
+        "BERN-123-LAD_FU_1763.jpg",
+        "BERN-123-LAD_FU_1777.jpg",
+        "ROTT-013-LAD_BL_1530.jpg"
+    ]
+    
+    # find the index for each of these filenames in our dataset
+    image_indices = []
+    all_base_filenames = [os.path.basename(p) for p in dataset.image_files]
+    for fname in specific_filenames_to_test:
+        try:
+            idx = all_base_filenames.index(fname)
+            image_indices.append(idx)
+        except ValueError:
+            print(f"Warning: Filename '{fname}' not found in the test set. Skipping.")
+
+    print(f"Visualising {len(image_indices)} specific images...")
+
+
+    ## uncomment both these lines to visualise random frames with bboxes
+    #image_indices = random.sample(range(len(dataset)), NUM_IMAGES_TO_VISUALIZE)
+    #print(f"Visualising {len(image_indices)} random images...")
 
     val_transform = get_val_transforms()
 
@@ -75,7 +111,7 @@ def main():
         image_to_draw_on = cv2.resize(center_color_frame_raw, (config.RESOLUTION, config.RESOLUTION))
         image_to_draw_on = cv2.cvtColor(image_to_draw_on, cv2.COLOR_RGB2BGR)
 
-        # --- THIS IS THE FIX: Load and scale ground-truth boxes directly ---
+        # --- load and scale ground-truth boxes directly ---
         annot_path = dataset.annotation_files[idx]
         boxes_xywh = np.load(annot_path, allow_pickle=True)
         gt_boxes = []
@@ -89,11 +125,10 @@ def main():
         
         for box in gt_boxes:
             x1, y1, x2, y2 = box
-            # Scale the box coordinates
+            # scale the box coordinates
             scaled_x1, scaled_y1, scaled_x2, scaled_y2 = int(x1 * scale_w), int(y1 * scale_h), int(x2 * scale_w), int(y2 * scale_h)
-            # Draw the scaled box in GREEN
+            # draw the scaled box in GREEN
             cv2.rectangle(image_to_draw_on, (scaled_x1, scaled_y1), (scaled_x2, scaled_y2), (0, 255, 0), 2)
-        # -----------------------------------------------------------------
 
         # draw predicted boxes in RED
         for box, score in zip(outputs[0]['boxes'], outputs[0]['scores']):

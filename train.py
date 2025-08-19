@@ -1,4 +1,4 @@
-# train.py (Corrected for V8 - No Augmentations)
+# train.py (updated for V8 - no augmentations)
 
 import os
 import torch
@@ -8,11 +8,10 @@ import numpy as np
 from tqdm import tqdm
 import torchmetrics
 
-# Project-specific imports
+# project-specific imports
 import config
 from dataset import IVUSSideBranchDataset
 from temporal_attention_model import FPN_Temporal_Attention_FasterRCNN
-# THIS IS THE PRIMARY FIX: Import the correctly named functions
 from augmentations import get_train_transforms, get_val_transforms
 from utils import collate_fn, EarlyStopping, save_plots
 
@@ -72,8 +71,7 @@ def main():
     train_dir = os.path.join(config.DATA_ROOT, 'train')
     val_dir = os.path.join(config.DATA_ROOT, 'val')
 
-    # THIS IS THE FIX: We explicitly get the transform we want to use.
-    # For this run, it will ALWAYS be get_val_transforms() because of the --no-augment flag.
+    # for this run, it will ALWAYS be get_val_transforms() because of the --no-augment flag.
     if use_augmentations:
         transform_to_use = get_train_transforms()
     else:
@@ -104,7 +102,7 @@ def main():
     print(f"INFO: Created the Temporal Attention Faster R-CNN model with {(2 * config.TEMPORAL_FRAMES_K) + 1} input channels")
     model.to(config.DEVICE)
     
-    # --- Optimizer, Scheduler, Early Stopping ---
+    # --- Optimiser, Scheduler, Early Stopping ---
     params = [p for p in model.parameters() if p.requires_grad]
     optimizer = torch.optim.SGD(params, lr=config.LEARNING_RATE, momentum=config.MOMENTUM, weight_decay=config.WEIGHT_DECAY)
     lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=7, gamma=0.1)

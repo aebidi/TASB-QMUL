@@ -1,4 +1,4 @@
-# dataset.py (Corrected for V8 - No Augmentations)
+# dataset.py (updated for V8 - no augmentations)
 
 import torch
 import cv2
@@ -6,17 +6,15 @@ import numpy as np
 import os
 import config
 
-# THIS IS THE PRIMARY FIX: Import the correctly named function.
 from augmentations import get_val_transforms
 
 class IVUSSideBranchDataset(torch.utils.data.Dataset):
     def __init__(self, root_dir, transform=None):
         self.root_dir = root_dir
-        self.transform = transform # This will be get_val_transforms
+        self.transform = transform # this will be get_val_transforms
         self.image_files = []
         self.annotation_files = []
 
-        # ... (The file loading part is correct, no changes needed) ...
         for series_folder in sorted(os.listdir(self.root_dir)):
             series_path = os.path.join(self.root_dir, series_folder)
             if not os.path.isdir(series_path): continue
@@ -60,12 +58,12 @@ class IVUSSideBranchDataset(torch.utils.data.Dataset):
         # --- 3. Apply a consistent transform to each frame ---
         transformed_frames = []
         if self.transform is not None:
-            # The transform passed from train.py is get_val_transforms.
-            # It has NO bbox_params, so it can be safely called on each image.
+            # the transform passed from train.py is get_val_transforms
+            # it has NO bbox_params, so it can be safely called on each image
             for frame in raw_frames_to_load:
                 transformed_frames.append(self.transform(image=frame)['image'])
         
-        # Stack the list of processed [C, H, W] tensors into a single [T, C, H, W] tensor
+        # stack the list of processed [C, H, W] tensors into a single [T, C, H, W] tensor
         image_stack = torch.stack(transformed_frames, dim=0)
 
         # --- 4. Manually Scale Bounding Boxes ---

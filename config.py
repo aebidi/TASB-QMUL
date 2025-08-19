@@ -1,8 +1,8 @@
 import torch
 
 # --- Reproducibility ---
-# Rationale: Setting a seed ensures that random operations (like model weight
-# initialization, data shuffling) are the same every time you run the code.
+# setting a seed ensures that random operations (like model weight
+# initialisation, data shuffling) are the same every time we run the code
 SEED = 42
 
 # -- Project Paths --
@@ -10,7 +10,6 @@ DATA_ROOT = '/home/qzhang-server2/Documents/Abdullah_Data/Frame_Dataset'
 OUTPUT_DIR = '/home/qzhang-server2/Documents/Abdullah_Notebooks/sb_baseline/results'
 
 # --- Data & Augmentation Parameters ---
-# Rationale: Using a single RESOLUTION variable is cleaner than separate
 RESOLUTION = 480
 
 # -- Model & Training Parameters --
@@ -26,12 +25,12 @@ WEIGHT_DECAY = 0.0005
 NUM_WORKERS = 6 
 
 # --- Inference Parameters ---
-# Rationale: Centralizing the confidence threshold for visualization/evaluation
+# centralising the confidence threshold for visualisation/evaluation
 # is good practice.
-CONFIDENCE_THRESHOLD = 0.5 # We can start at 0.5 and increase if needed
+CONFIDENCE_THRESHOLD = 0.5 # starting at 0.5 and increasing if needed
 
 # --- Temporal Model Parameters ---
-# The number of adjacent frames to use on EACH side of the central frame
+# number of adjacent frames to use on EACH side of the central frame
 # k=2 means we use 5 frames total: (n-2, n-1, n, n+1, n+2)
 TEMPORAL_FRAMES_K = 3
 

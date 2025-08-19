@@ -1,4 +1,4 @@
-# for helper fucntions
+# for helper functions
 import numpy as np
 import torch
 import os

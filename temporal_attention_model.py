@@ -1,5 +1,3 @@
-# temporal_attention_model.py
-
 import torch
 from torch import nn
 from collections import OrderedDict

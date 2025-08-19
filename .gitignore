@@ -7,6 +7,7 @@ final_model_weights/
 visualisations_v4/
 visualisations_v5/
 visualisations_v8/
+visualisations_v7_for_paper/
 
 training_log_v3.log
 training_v4_no_augment.log

@@ -6,10 +6,9 @@ class TemporalFeatureMapAttention(nn.Module):
         super().__init__()
         self.attention_scorer = nn.Conv2d(in_channels * 2, 1, kernel_size=1)
         
-        # --- THIS IS THE FIX ---
-        # A learnable parameter, initialized to 0.
+        # a learnable parameter, initialized to 0.
         self.gamma = nn.Parameter(torch.zeros(1))
-        # -----------------------
+    
 
     def forward(self, feature_maps_sequence):
         center_idx = feature_maps_sequence.size(0) // 2
@@ -27,12 +26,11 @@ class TemporalFeatureMapAttention(nn.Module):
         
         sequence_reshaped = feature_maps_sequence.permute(1, 0, 2, 3, 4)
         
-        # Calculate the attention-weighted sum of all features
+        # calculating the attention-weighted sum of all features
         attended_features = (attention_weights * sequence_reshaped).sum(dim=1)
         
-        # --- THIS IS THE FIX ---
-        # The final output is the original center feature plus the attended features,
-        # scaled by our learnable gamma.
+        # final output is the original center feature plus the attended features,
+        # scaled by our learnable gamma
         refined_feature_map = center_feature_map + self.gamma * attended_features
         
         return refined_feature_map
