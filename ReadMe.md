@@ -21,8 +21,8 @@ cd sb_baseline
 
 ### 2. Create and Activate Conda Environment
 ```bash
-conda create -n sbdi_env python=3.10
-conda activate sbdi_env
+conda create -n venv python=3.10
+conda activate venv
 ```
 
 ### 3. Install Dependencies
