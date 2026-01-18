@@ -1,5 +1,9 @@
 # TASB: Temporally-Aware Side-Branch Detection in Intravascular Ultrasound with Weak Supervision
 
+![v8_BERN-050-LAD_DIST_FU_1255](https://github.com/user-attachments/assets/e9973db2-ec1a-4881-8bf0-af4818829c33)
+![v8_BERN-060-LCX_BL_0278](https://github.com/user-attachments/assets/6b2aee54-2e90-4c74-8ef9-3fc98dae8c86)
+
+
 ## Project Structure
 
 <img width="608" height="590" alt="Screenshot 2025-08-16 at 7 24 06 PM" src="https://github.com/user-attachments/assets/1ef7928f-3edd-4bd2-8498-5379db1002ca" />
